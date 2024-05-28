@@ -1,0 +1,17 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-image: url('/assets/img/library.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  app-form-register {
+    background: rgba(240, 240, 240, 0.8); 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px rgba(48, 47, 47, 0.438);
+  }
+  

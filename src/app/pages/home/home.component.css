@@ -1,10 +1,24 @@
 .home-container {
+    background: rgba(240, 240, 240, 0.8); 
     padding: 40px;
     text-align: center;
-    background-color: #f0f0f0;
     border-radius: 8px;
     margin: 20px auto;
     max-width: 800px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .home-background {
+    background-image: url('/assets/img/library.jpg'); 
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
   }
   
   .home-container h2 {
@@ -15,11 +29,6 @@
   .home-container p {
     font-size: 1.2em;
     margin-bottom: 30px;
-  }
-  
-  .promo h3 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
   }
   
   .promo ul {
