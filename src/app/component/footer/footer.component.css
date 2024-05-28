@@ -1,0 +1,28 @@
+footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-top: 1px solid #e7e7e7;
+    text-align: center;
+  }
+  
+  .social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-links li {
+    margin: 0 10px;
+  }
+  
+  .social-links a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .social-links a:hover {
+    text-decoration: underline;
+  }
+  
