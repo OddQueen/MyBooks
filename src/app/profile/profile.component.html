@@ -1,0 +1,31 @@
+<div class="profile-page">
+  <div class="profile-box">
+    <div class="profile-details">
+      <img [src]="user.photo" alt="Profile Image" class="profile-img">
+      <h2>{{ user.name }} {{ user.last_name }}</h2>
+      <p><strong>Nombre:</strong> {{ user.name }}</p>
+      <p><strong>Apellido:</strong> {{ user.last_name }}</p>
+      <p><strong>Correo:</strong> {{ user.email }}</p>
+    </div>
+  </div>
+  <div class="edit-box">
+    <h2>Editar datos</h2>
+    <form (ngSubmit)="updateUser()">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="editName" name="name" id="name" placeholder="Nombre">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="editLastName" name="lastName" id="surname" placeholder="Apellidos">
+      </div>
+      <div class="form-group">
+        <input type="email" [(ngModel)]="editEmail" name="email" id="email" placeholder="Correo">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="editPhoto" name="url" id="url" placeholder="URL">
+      </div>
+      <div>
+        <button type="submit">Modificar</button><br>
+      </div>
+    </form>
+  </div>
+</div>
