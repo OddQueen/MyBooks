@@ -1,0 +1,27 @@
+<body>
+  <div *ngIf="books.length === 0">No books available.</div>
+  <div *ngIf="books.length > 0" class="card-container">
+    <div *ngFor="let book of books; let i = index" class="card">
+      <img [src]="book.photo" alt="{{book.title}}">
+      <h2>{{book.title}}</h2>
+      <p>{{book.author}}</p>
+      <p>{{book.type}}</p>
+      <p><strong>{{ book.price | currency:'EUR':'symbol' }}</strong></p>
+      <p>{{book.ref}}</p>
+      <p>{{book.id_book}}</p>
+      <button [ngClass]="{'even': i % 2 === 0, 'odd': i % 2 !== 0}">Comprar</button>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <form (ngSubmit)="addBook()">
+      <input type="text" placeholder="Titulo" [(ngModel)]="newBook.title" name="title" required>
+      <input type="text" placeholder="Autor" [(ngModel)]="newBook.author" name="author" required>
+      <input type="text" placeholder="Tapadura/blanda" [(ngModel)]="newBook.type" name="type" required>
+      <input type="number" placeholder="Precio" [(ngModel)]="newBook.price" name="price" required>
+      <input type="text" placeholder="Photo URL" [(ngModel)]="newBook.photo" name="photo" required>
+      <input type="text" placeholder="Código Libro" [(ngModel)]="newBook.ref" name="ref" required>
+      <button type="submit">Añadir Libro</button>
+    </form>
+  </div>
+</body>
