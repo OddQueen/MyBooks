@@ -19,4 +19,8 @@ export class BooksComponent {
     this.books.push(new Book(nextId, this.newBook.id_user, this.newBook.title, this.newBook.type, this.newBook.author, this.newBook.price, this.newBook.photo, this.newBook.ref));
     this.newBook = new Book(0, 0, '', '', '', 0, '', '');
   }
+
+  onDeleteBook(bookId: number) {
+    this.books = this.books.filter(book => book.id_book !== bookId);
+  }
 }

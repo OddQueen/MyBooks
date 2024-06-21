@@ -10,4 +10,4 @@ export class Book {
       public ref: string
     ) {}
   }
-  
+
