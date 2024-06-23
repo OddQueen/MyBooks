@@ -5,7 +5,6 @@
       <app-card *ngFor="let book of books; let i = index" [book]="book" (delete)="onDeleteBook($event)" [class.even]="i % 2 === 0" [class.odd]="i % 2 !== 0"></app-card>
     </div>
   </div>
-
   <div class="form-container">
     <form (ngSubmit)="addBook()">
       <input type="text" placeholder="Titulo" [(ngModel)]="newBook.title" name="title" required>
@@ -13,7 +12,7 @@
       <input type="text" placeholder="Tapa dura/blanda" [(ngModel)]="newBook.type" name="type" required>
       <input type="number" placeholder="Precio" [(ngModel)]="newBook.price" name="price" required>
       <input type="text" placeholder="Photo URL" [(ngModel)]="newBook.photo" name="photo" required>
-      <input type="text" placeholder="Código Libro" [(ngModel)]="newBook.ref" name="ref" required>
+      <input type="text" placeholder="Código Libro" [(ngModel)]="newBook.id_book" name="id" required>
       <button type="submit">Añadir Libro</button>
     </form>
   </div>

@@ -1,12 +1,10 @@
 <div class="card">
-    <button class="x-btn" (click)="removeCard()">X</button>
-    <img [src]="book.photo" alt="{{book.title}}">
-    <h2>{{book.title}}</h2>
-    <p>{{book.author}}</p>
-    <p>{{book.type}}</p>
-    <p><strong>{{ book.price | currency:'EUR':'symbol' }}</strong></p>
-    <p>{{book.ref}}</p>
-    <p>{{book.id_book}}</p>
-    <button [ngClass]="{'even': isEven, 'odd': !isEven}">Comprar</button>
-  </div>
-  
+  <button class="x-btn" (click)="removeCard()">X</button>
+  <img [src]="book.photo" alt="{{book.title}}">
+  <h2>{{book.title}}</h2>
+  <p>{{book.author}}</p>
+  <p>{{book.type}}</p>
+  <p><strong>{{book.price | currency:'EUR':'symbol'}}</strong></p>
+  <p>{{ book.id_book | codigo }}</p>
+  <button [ngClass]="{'even': isEven, 'odd': !isEven}">Comprar</button>
+</div>
