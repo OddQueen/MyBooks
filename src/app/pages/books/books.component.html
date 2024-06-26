@@ -1,19 +1,15 @@
 <body>
-  <div *ngIf="books.length === 0">No hay libros.</div>
-  <div *ngIf="books.length > 0">
+  <div class="search-container">
+    <input type="text" placeholder="Buscador de libros..." [(ngModel)]="searchTerm" (input)="searchBooks()">
+    <button (click)="searchBooks()">
+      <img src="assets/img/search.png" alt="search icon">
+    </button>
+  </div>
+  <div *ngIf="filteredBooks.length === 0">No hay libros.</div>
+  <div *ngIf="filteredBooks.length > 0">
     <div class="card-container">
-      <app-card *ngFor="let book of books; let i = index" [book]="book" (delete)="onDeleteBook($event)" [class.even]="i % 2 === 0" [class.odd]="i % 2 !== 0"></app-card>
+      <app-card *ngFor="let book of filteredBooks; let i = index" [book]="book" (delete)="onDeleteBook($event)" [class.even]="i % 2 === 0" [class.odd]="i % 2 !== 0"></app-card>
     </div>
   </div>
-  <div class="form-container">
-    <form (ngSubmit)="addBook()">
-      <input type="text" placeholder="Titulo" [(ngModel)]="newBook.title" name="title" required>
-      <input type="text" placeholder="Autor" [(ngModel)]="newBook.author" name="author" required>
-      <input type="text" placeholder="Tapa dura/blanda" [(ngModel)]="newBook.type" name="type" required>
-      <input type="number" placeholder="Precio" [(ngModel)]="newBook.price" name="price" required>
-      <input type="text" placeholder="Photo URL" [(ngModel)]="newBook.photo" name="photo" required>
-      <input type="text" placeholder="Código Libro" [(ngModel)]="newBook.id_book" name="id" required>
-      <button type="submit">Añadir Libro</button>
-    </form>
-  </div>
+  <button [routerLink]="['/add-book']">Añadir Libro</button>
 </body>

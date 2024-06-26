@@ -1,0 +1,12 @@
+<div *ngIf="book" class="form-container">
+        <h2>Actualizar Libro</h2>
+        <form (ngSubmit)="updateBook()">
+            <input type="text" class="form-control" id="title" placeholder="Titulo" [(ngModel)]="book.title" name="title" required>
+            <input type="text" class="form-control" id="author" placeholder="Autor" [(ngModel)]="book.author" name="author" required>
+            <input type="text" class="form-control" id="type" placeholder="Tapa dura/blanda" [(ngModel)]="book.type" name="type" required>
+            <input type="number" class="form-control" id="price" placeholder="Precio" [(ngModel)]="book.price" name="price" required>
+            <input type="text" class="form-control" id="photo" placeholder="Photo URL" [(ngModel)]="book.photo" name="photo" required>
+          <button type="submit" class="btn btn-primary mt-3">Actualizar Libro</button>
+        </form>
+</div>
+      

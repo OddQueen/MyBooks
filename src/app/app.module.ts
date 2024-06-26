@@ -12,6 +12,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { BooksComponent } from './pages/books/books.component';
 import { CardComponent } from './component/card/card.component';
 import { CodigoPipe } from './codigo.pipe';
+import { AddBookComponent } from './pages/add-book/add-book.component';
+import { UpdateBookComponent } from './pages/update-book/update-book.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { CodigoPipe } from './codigo.pipe';
     BooksComponent,
     CardComponent,
     CodigoPipe,
+    AddBookComponent,
+    UpdateBookComponent,
   ],
   imports: [
     BrowserModule,

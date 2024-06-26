@@ -1,0 +1,12 @@
+<div class="form-container">
+    <h2>Añadir Libro</h2>
+    <form (ngSubmit)="addBook()">
+        <input type="text" class="form-control" id="title" placeholder="Titulo" [(ngModel)]="newBook.title" name="title" required>
+        <input type="text" class="form-control" id="author" placeholder="Autor" [(ngModel)]="newBook.author" name="author" required>
+        <input type="text" class="form-control" id="type" placeholder="Tapa dura/blanda" [(ngModel)]="newBook.type" name="type" required>
+        <input type="number" class="form-control" id="price" placeholder="Precio" [(ngModel)]="newBook.price" name="price" required>
+        <input type="text" class="form-control" id="photo" placeholder="Photo URL" [(ngModel)]="newBook.photo" name="photo" required>
+        <button type="submit" class="btn btn-primary mt-3">Añadir Libro</button>
+    </form>
+</div>
+    
