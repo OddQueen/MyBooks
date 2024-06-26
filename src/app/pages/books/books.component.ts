@@ -1,4 +1,3 @@
-// books.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Book } from './books';
 import { BooksService } from '../../shared/books.service';
