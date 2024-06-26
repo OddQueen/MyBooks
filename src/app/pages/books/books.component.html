@@ -1,9 +1,6 @@
 <body>
   <div class="search-container">
     <input type="text" placeholder="Buscador de libros..." [(ngModel)]="searchTerm" (input)="searchBooks()">
-    <button (click)="searchBooks()">
-      <img src="assets/img/search.png" alt="search icon">
-    </button>
   </div>
   <div *ngIf="filteredBooks.length === 0">No hay libros.</div>
   <div *ngIf="filteredBooks.length > 0">

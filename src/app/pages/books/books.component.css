@@ -17,25 +17,8 @@ body {
 .search-container input {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 8px 0 0 8px;
+  border-radius: 8px;
   width: 200px;
-}
-
-.search-container button {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-left: none;
-  border-radius: 0 8px 8px 0;
-  background-color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.search-container button img {
-  width: 20px;
-  height: 20px;
 }
 
 .card-container {
