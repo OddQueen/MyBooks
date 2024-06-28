@@ -6,7 +6,6 @@
   <p>{{book.type}}</p>
   <p><strong>{{book.price | currency:'EUR':'symbol'}}</strong></p>
   <p>{{ book.id_book | codigo }}</p>
-  <button class="btn btn-danger" [routerLink]="['/update-book', book.id_book]" class="btn btn-primary ml-2">Editar</button>
-
+  <button [routerLink]="['/update-book']">Editar</button>
   <button [ngClass]="{'even': isEven, 'odd': !isEven}">Comprar</button>
 </div>

@@ -1,12 +1,10 @@
-<body>
-  <div class="search-container">
-    <input type="text" placeholder="Buscador de libros..." [(ngModel)]="searchTerm" (input)="searchBooks()">
+<div class="search-container">
+  <input type="number" placeholder="Buscador de libros..." [(ngModel)]="searchTerm" (input)="searchBooks()">
+</div>
+<div *ngIf="filteredBooks.length === 0">No hay libros.</div>
+<div *ngIf="filteredBooks.length > 0">
+  <div class="card-container">
+    <app-card *ngFor="let book of filteredBooks; let i = index" [book]="book" (delete)="onDeleteBook($event)" [class.even]="i % 2 === 0" [class.odd]="i % 2 !== 0"></app-card>
   </div>
-  <div *ngIf="filteredBooks.length === 0">No hay libros.</div>
-  <div *ngIf="filteredBooks.length > 0">
-    <div class="card-container">
-      <app-card *ngFor="let book of filteredBooks; let i = index" [book]="book" (delete)="onDeleteBook($event)" [class.even]="i % 2 === 0" [class.odd]="i % 2 !== 0"></app-card>
-    </div>
-  </div>
-  <button [routerLink]="['/add-book']">Añadir Libro</button>
-</body>
+</div>
+<button [routerLink]="['/add-book']">Añadir Libro</button>
