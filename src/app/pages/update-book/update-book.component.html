@@ -1,12 +1,36 @@
-<div *ngIf="book" class="form-container">
-        <h2>Actualizar Libro</h2>
-        <form (ngSubmit)="updateBook()">
-            <input type="text" class="form-control" id="title" placeholder="Titulo" [(ngModel)]="book.title" name="title" required>
-            <input type="text" class="form-control" id="author" placeholder="Autor" [(ngModel)]="book.author" name="author" required>
-            <input type="text" class="form-control" id="type" placeholder="Tapa dura/blanda" [(ngModel)]="book.type" name="type" required>
-            <input type="number" class="form-control" id="price" placeholder="Precio" [(ngModel)]="book.price" name="price" required>
-            <input type="text" class="form-control" id="photo" placeholder="Photo URL" [(ngModel)]="book.photo" name="photo" required>
-          <button type="submit" class="btn btn-primary mt-3">Actualizar Libro</button>
-        </form>
+<h2>Actualizar tus libros</h2>
+<div class="card-container">
+  <div *ngFor="let book of books">
+    <div class="card">
+      <img [src]="book.photo" alt="{{book.title}}">
+      <h2>{{book.title}}</h2>
+      <p>{{book.author}}</p>
+      <p>{{book.type}}</p>
+      <p><strong>{{book.price | currency:'EUR':'symbol'}}</strong></p>
+      <button (click)="editBook(book)">Editar</button>
+    </div>
+  </div>
 </div>
-      
+
+<div *ngIf="bookToEdit">
+  <h3>Editando: {{bookToEdit.title}}</h3>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Título:</label>
+      <input type="text" id="title" [(ngModel)]="bookToEdit.title" name="title" required>
+    </div>
+    <div>
+      <label for="author">Autor:</label>
+      <input type="text" id="author" [(ngModel)]="bookToEdit.author" name="author" required>
+    </div>
+    <div>
+      <label for="type">Tipo:</label>
+      <input type="text" id="type" [(ngModel)]="bookToEdit.type" name="type" required>
+    </div>
+    <div>
+      <label for="price">Precio:</label>
+      <input type="number" id="price" [(ngModel)]="bookToEdit.price" name="price" required>
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Actualizar Libro</button>
+  </form>
+</div>

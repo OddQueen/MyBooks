@@ -1,4 +1,3 @@
-// books.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Book } from './books';
 import { BooksService } from '../../shared/books.service';
@@ -11,7 +10,7 @@ import { BooksService } from '../../shared/books.service';
 export class BooksComponent implements OnInit {
   books: Book[] = [];
   filteredBooks: Book[] = [];
-  searchTerm: string = '';
+  searchTerm: number | undefined;
 
   constructor(private booksService: BooksService) {}
 
@@ -21,10 +20,8 @@ export class BooksComponent implements OnInit {
   }
 
   searchBooks(): void {
-    if (this.searchTerm) {
-      this.filteredBooks = this.books.filter(book =>
-        book.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+    if (this.searchTerm !== undefined) {
+      this.filteredBooks = this.books.filter(book => book.id_book === this.searchTerm);
     } else {
       this.filteredBooks = this.books;
     }

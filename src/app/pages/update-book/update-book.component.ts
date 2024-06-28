@@ -9,7 +9,8 @@ import { BooksService } from '../../shared/books.service';
   styleUrls: ['./update-book.component.css']
 })
 export class UpdateBookComponent implements OnInit {
-  book: Book | undefined;
+  books: Book[] = [];
+  bookToEdit: Book | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,13 +19,21 @@ export class UpdateBookComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const bookId = +this.route.snapshot.paramMap.get('id')!;
-    this.book = this.booksService.getOne(bookId);
+    this.books = this.booksService.getAll();
+    const bookId = this.route.snapshot.paramMap.get('id');
+    if (bookId) {
+      this.bookToEdit = this.booksService.getOne(+bookId);
+    }
   }
 
-  updateBook() {
-    if (this.book) {
-      this.booksService.edit(this.book);
+  editBook(book: Book): void {
+    this.bookToEdit = { ...book };
+  }
+
+  onSubmit(): void {
+    if (this.bookToEdit) {
+      this.booksService.edit(this.bookToEdit);
+      this.bookToEdit = undefined;
       this.router.navigate(['/books']);
     }
   }
