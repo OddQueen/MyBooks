@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from './books';
 import { BooksService } from '../../shared/books.service';
+import { Respuesta } from '../../models/respuesta/respuesta.component';
 
 @Component({
   selector: 'app-books',
@@ -15,8 +16,14 @@ export class BooksComponent implements OnInit {
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
-    this.books = this.booksService.getAll();
-    this.filteredBooks = this.books;
+    this.booksService.getAll().subscribe((response: Respuesta) => {
+      if (!response.error) {
+        this.books = response.data;
+        this.filteredBooks = this.books;
+      } else {
+        console.error(response.message);
+      }
+    });
   }
 
   searchBooks(): void {
@@ -28,8 +35,17 @@ export class BooksComponent implements OnInit {
   }
 
   onDeleteBook(bookId: number): void {
-    this.booksService.delete(bookId);
-    this.books = this.booksService.getAll();
-    this.searchBooks();
+    this.booksService.delete(bookId).subscribe((response: Respuesta) => {
+      if (!response.error) {
+        this.booksService.getAll().subscribe((response: Respuesta) => {
+          if (!response.error) {
+            this.books = response.data;
+            this.searchBooks();
+          }
+        });
+      } else {
+        console.error(response.message);
+      }
+    });
   }
 }
