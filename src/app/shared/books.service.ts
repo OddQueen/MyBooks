@@ -8,7 +8,7 @@ import { Respuesta } from '../models/respuesta/respuesta.component';
   providedIn: 'root'
 })
 export class BooksService {
-  private apiUrl = 'http://localhost:3000/api/books';
+  private apiUrl = 'http://localhost:4200/api/books';
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +17,7 @@ export class BooksService {
   }
 
   getOne(id_book: number): Observable<Respuesta> {
-    return this.http.get<Respuesta>(this.apiUrl + '/' + id_book);
+    return this.http.get<Respuesta>(`${this.apiUrl}/${id_book}`);
   }
 
   add(book: Book): Observable<Respuesta> {
@@ -25,10 +25,10 @@ export class BooksService {
   }
 
   edit(book: Book): Observable<Respuesta> {
-    return this.http.put<Respuesta>(this.apiUrl + '/' + book.id_book, book);
+    return this.http.put<Respuesta>(`${this.apiUrl}/${book.id_book}`, book);
   }
 
   delete(id_book: number): Observable<Respuesta> {
-    return this.http.delete<Respuesta>(this.apiUrl + '/' + id_book);
+    return this.http.delete<Respuesta>(`${this.apiUrl}/${id_book}`);
   }
 }

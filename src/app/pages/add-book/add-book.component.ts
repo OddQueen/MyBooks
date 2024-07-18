@@ -22,6 +22,8 @@ export class AddBookComponent {
       } else {
         console.error(response.message);
       }
+    }, error => {
+      console.error('Error:', error);
     });
   }
 }
