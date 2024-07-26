@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
     res.status(404).json({
         error: true,
         codigo: 404,
-        message: "Endpoint doesn't found"
+        message: "Endpoint not found"
     });
 });
 

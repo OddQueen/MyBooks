@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
   selector: 'app-form-register',
   templateUrl: './form-register.component.html',
   styleUrls: ['./form-register.component.css']
 })
-export class FormRegisterComponent implements OnInit {
-  registerForm!: FormGroup;
+export class FormRegisterComponent {
+  registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit() {
+  constructor(private fb: FormBuilder, private userService: UserService) {
     this.registerForm = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      name: ['', Validators.required],
+      last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      url: ['', Validators.pattern('https?://.+')],
+      photo: ['', Validators.pattern('https?://.+')],
       password: ['', [
         Validators.required,
         Validators.minLength(8),
@@ -27,20 +26,21 @@ export class FormRegisterComponent implements OnInit {
   }
 
   passwordMatchValidator(control: AbstractControl) {
-    let password = control.get('password');
-    let confirmPassword = control.get('confirmPassword');
-    if (!password || !confirmPassword) {
-      return null;
-    }
-    return password.value === confirmPassword.value ? null : { 'mismatch': true };
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+    return password && confirmPassword && password.value === confirmPassword.value ? null : { mismatch: true };
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
+      this.userService.register(this.registerForm.value).subscribe(
+        response => {
+          console.log('Registration successful', response);
+        },
+        error => {
+          console.error('Registration failed', error);
+        }
+      );
     }
   }
 }
-//Remember apuntar
-//AbstractControl: form control de validaciones y errores
-//mismatch: wild card control de passwordMatchValidator, so it doesn't go berserk
